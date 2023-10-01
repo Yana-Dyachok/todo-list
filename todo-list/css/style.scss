@@ -4,28 +4,186 @@
     padding: 0;
     margin: 0;
     border: 0;
-  
+
     &:before,
     &:after {
-      box-sizing: border-box;
+        box-sizing: border-box;
     }
-  }
-  
-  :focus,
-  :active {
+}
+
+:focus,
+:active {
     outline: none;
-  }
-  
-  a {
+}
+
+a {
     text-decoration: none;
     color: inherit;
-  
+
     &:focus,
     &:active {
-      outline: none;
+        outline: none;
     }
-  }
-  
-  html {
+}
+
+$background: #f0ec8b;
+$darkGrey: #2b2726;
+$textColor: #8e43ed;
+$grey: #403541;
+
+@mixin positions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin sizeAndPosition {
+    position: absolute;
+    height: 1.5rem;
+    width: 1.5rem;
+    top: 0.5rem;
+}
+
+@mixin positionForLi {
+    padding: 0.3rem 2rem 1rem;
+    list-style: none;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+}
+
+@mixin btnDeleteTask {
+    content: '';
+    position: absolute;
+    height: 1.7rem;
+    width: 1.7rem;
+    top: 1rem;
+    right: 0;
+    background: url(../assets/logo/close_cross_delete_remove_icon_177622.svg)
+        center/cover;
+    cursor: pointer;
+}
+
+html {
     scroll-behavior: smooth;
-  }
+}
+
+body {
+    @include positions;
+    font-size: 1.5625rem;
+    font-weight: 400;
+    color: $textColor;
+    background-color: $background;
+}
+
+.todo-block {
+    width: 100%;
+    min-width: 500px;
+    min-height: 200px;
+    padding: 1.5rem;
+    border-radius: 0.625rem;
+    background-color: $background;
+}
+
+.input-todo-block {
+    display: flex;
+    border-radius: 0.625rem;
+    background-color: $grey;
+}
+
+.input-todo {
+    flex-grow: 1;
+    border: 0;
+    outline: 0;
+    min-width: 8.125rem;
+    max-width: 100%;
+    height: 3rem;
+    padding-left: 0.625rem;
+    font-size: 1.25rem;
+    border: none;
+    border-radius: 0.625rem 0 0 0.625rem;
+    box-sizing: border-box;
+    color: $darkGrey;
+
+    &::placeholder {
+        color: $grey;
+        opacity: 0.6;
+    }
+}
+
+.add-todo-btn {
+    min-width: 4.375rem;
+    height: 3rem;
+    font-size: 1.2rem;
+    color: $darkGrey;
+    border: none;
+    background-color: $textColor;
+    border-radius: 0 0.625rem 0.625rem 0;
+    cursor: pointer;
+
+    &:hover {
+        color: $background;
+        background-color: $grey;
+    }
+}
+
+.todo-task-list {
+    flex-grow: 1;
+    padding-top: 0.625rem;
+
+    & li {
+        @include positionForLi;
+        &::before {
+            content: '';
+            @include sizeAndPosition;
+            left: 0;
+            border-radius: 50%;
+            background: url(../assets/logo/circle_icon-icons.com_70254.svg)
+                center/cover;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    & .span-task::before {
+        @include btnDeleteTask();
+    }
+}
+
+.progress-tasks {
+    & li {
+        @include positionForLi;
+        &::before {
+            content: '';
+            @include sizeAndPosition;
+            left: 0;
+            background: url(../assets/logo/checked-3_icon-icons.com_70259.svg)
+                center/cover;
+        }
+
+        &.checked {
+            text-decoration: line-through;
+
+            &::before {
+                background: url(../assets/logo/checked-3_icon-icons.com_70259.svg)
+                    center/cover;
+            }
+        }
+    }
+    & .span-task::before {
+        @include btnDeleteTask();
+    }
+}
+
+.title-progress-tasks{
+    display: block;
+    color: $grey;
+}
+
+.todo-text {
+    padding: 1rem 0rem;
+    text-align: center;
+    font-weight: 700;
+}
