@@ -24,7 +24,7 @@ function addTasks() {
         toDoTaskList.appendChild(task);
     }
     inputToDo.value = '';
-    //setLocalStorage();
+    setLocalStorage();
     getCheckedTask();
     returnCheckedTask();
 }
@@ -38,10 +38,10 @@ function getCheckedTask() {
                     ? 'Your progress'
                     : 'Ваш прогрес';
             progressTasks.appendChild(event.target);
-            //setLocalStorage();
+            setLocalStorage();
         } else if (event.target.tagName === 'SPAN') {
             event.target.parentElement.remove();
-           // setLocalStorage();
+            setLocalStorage();
         }
     });
 }
@@ -58,7 +58,7 @@ function returnCheckedTask() {
             event.target.parentElement.remove();
             if (progressTasks.childElementCount === 0)
                 titleProgressTasks.textContent = '';
-            //setLocalStorage();
+            setLocalStorage();
         }
     });
 }
@@ -71,3 +71,31 @@ function getTodoList() {
 }
 
 getTodoList();
+
+function setLocalStorage() {
+    localStorage.setItem('todo-list', toDoTaskList.innerHTML);
+    localStorage.setItem('progressed-todo', progressTasks.innerHTML);
+    localStorage.setItem('title-progress', titleProgressTasks.textContent);
+}
+
+function getLocalStorage() {
+
+    if (localStorage.getItem('title-progress')) {
+        titleProgressTasks.textContent = localStorage.getItem('title-progress');
+        getCheckedTask();
+        returnCheckedTask();
+    }
+
+    if (localStorage.getItem('todo-list')) {
+        toDoTaskList.innerHTML = localStorage.getItem('todo-list');
+        getCheckedTask();
+        returnCheckedTask();
+    }
+
+    if (localStorage.getItem('progressed-todo')) {
+        progressTasks.innerHTML = localStorage.getItem('progressed-todo');
+    }
+}
+
+window.addEventListener('beforeunload', setLocalStorage);
+window.addEventListener('load', getLocalStorage);
