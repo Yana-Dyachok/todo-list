@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=MonteCarlo&display=swap');
 /*Normalize*/
 
 * {
@@ -34,7 +35,6 @@ $grey: #403541;
 @mixin positions {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
@@ -66,10 +66,12 @@ $grey: #403541;
 }
 
 html {
+    height: 100%;
     scroll-behavior: smooth;
 }
 
 body {
+    min-height: 100vh;
     @include positions;
     font-size: 1.5625rem;
     font-weight: 400;
@@ -77,11 +79,15 @@ body {
     background-color: $background;
 }
 
+main {
+    flex-grow: 1;
+}
+
 .todo-block {
     width: 100%;
-    min-width: 500px;
-    min-height: 200px;
-    padding: 1.5rem;
+    min-width: 31.25rem;
+    min-height: 20rem;
+    padding: 1rem 2rem;
     border-radius: 0.625rem;
     background-color: $background;
 }
@@ -177,7 +183,7 @@ body {
     }
 }
 
-.title-progress-tasks{
+.title-progress-tasks {
     display: block;
     color: $grey;
 }
@@ -186,4 +192,38 @@ body {
     padding: 1rem 0rem;
     text-align: center;
     font-weight: 700;
+}
+
+footer {
+    @include positions;
+    justify-content: center;
+}
+
+.author {
+    font-family: 'MonteCarlo', cursive;
+    font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+
+    .todo-block {
+        min-width: 17rem;
+    }
+
+    .input-todo {
+        min-width: 5.625rem;
+    }
+
+}
+
+@media (max-width: 400px) {
+    
+    .todo-block {
+        min-width: 15rem;
+    }
+
+    .input-todo {
+        min-width: 5rem;
+    }
+
 }
