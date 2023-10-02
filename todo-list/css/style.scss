@@ -59,7 +59,7 @@ $grey: #403541;
     position: absolute;
     height: 1.7rem;
     width: 1.7rem;
-    top: 0.3rem;
+    top: 0.45rem;
     right: 0;
     background: url(../assets/logo/close_cross_delete_remove_icon_177622.svg)
         center/cover;
@@ -71,12 +71,12 @@ $grey: #403541;
 html {
     height: 100%;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
     min-height: 100vh;
     @include positions;
-    justify-content: baseline;
     font-size: 1.5625rem;
     font-weight: 400;
     color: $textColor;
@@ -227,13 +227,13 @@ footer {
     }
 
     footer {
-        padding-left: 2rem;
+        padding-left: 1rem;
     }
 }
 
 @media (max-width: 400px) {
     .todo-block {
-        min-width: 12rem;
+        min-width: 10rem;
         padding-left: 2rem;
     }
 
