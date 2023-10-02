@@ -22,6 +22,7 @@ a:focus, a:active {
   outline: none;
 }
 
+/* content-------------------------------------------------------------------------------------------*/
 html {
   height: 100%;
   scroll-behavior: smooth;
@@ -32,6 +33,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: baseline;
   font-size: 1.5625rem;
   font-weight: 400;
   color: #8e43ed;
@@ -43,10 +45,11 @@ main {
 }
 
 .todo-block {
+  justify-content: center;
   width: 100%;
   min-width: 31.25rem;
   min-height: 20rem;
-  padding: 1rem 2rem;
+  padding: 1rem;
   border-radius: 0.625rem;
   background-color: #f0ec8b;
 }
@@ -99,7 +102,7 @@ main {
   padding-top: 0.625rem;
 }
 .todo-task-list li {
-  padding: 0.3rem 2rem 1rem;
+  padding: 0.3rem 1rem 1rem 2rem;
   list-style: none;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -125,14 +128,14 @@ main {
   position: absolute;
   height: 1.7rem;
   width: 1.7rem;
-  top: 1rem;
+  top: 0.3rem;
   right: 0;
   background: url(../assets/logo/close_cross_delete_remove_icon_177622.svg) center/cover;
   cursor: pointer;
 }
 
 .progress-tasks li {
-  padding: 0.3rem 2rem 1rem;
+  padding: 0.3rem 1rem 1rem 2rem;
   list-style: none;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -160,7 +163,7 @@ main {
   position: absolute;
   height: 1.7rem;
   width: 1.7rem;
-  top: 1rem;
+  top: 0.3rem;
   right: 0;
   background: url(../assets/logo/close_cross_delete_remove_icon_177622.svg) center/cover;
   cursor: pointer;
@@ -181,7 +184,6 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .author {
@@ -191,17 +193,37 @@ footer {
 
 @media (max-width: 600px) {
   .todo-block {
-    min-width: 17rem;
+    min-width: 18rem;
   }
   .input-todo {
     min-width: 5.625rem;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 500px) {
   .todo-block {
-    min-width: 15rem;
+    min-width: 16rem;
   }
   .input-todo {
     min-width: 5rem;
+  }
+  footer {
+    padding-left: 3rem;
+  }
+}
+@media (max-width: 400px) {
+  .todo-block {
+    min-width: 12rem;
+    padding-left: 2rem;
+  }
+  .input-todo {
+    min-width: 4.5rem;
+  }
+}
+@media (max-width: 320px) {
+  .todo-block {
+    min-width: 8rem;
+  }
+  .input-todo {
+    min-width: 4rem;
   }
 }/*# sourceMappingURL=style.css.map */
