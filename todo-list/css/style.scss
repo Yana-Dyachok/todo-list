@@ -135,8 +135,15 @@ body {
     cursor: pointer;
 
     &:hover {
-        color: $background;
+        color: $textColor;
+        background-color: $background;
+        border: 0.1rem solid $textColor;
+    }
+
+    &:disabled {
         background-color: $grey;
+        box-shadow: none;
+        cursor: not-allowed;
     }
 }
 

@@ -10,11 +10,7 @@ let language='en'
 
 function addTasks() {
     if (inputToDo.value === '') {
-        alert(
-                language === 'en'
-                ? 'You should write something'
-                : 'Ви повинні щось написати'
-        );
+        addButton.disabled = true;
     } else {
         let task = document.createElement('li');
         task.innerHTML = inputToDo.value;
@@ -23,6 +19,7 @@ function addTasks() {
         task.appendChild(span);
         toDoTaskList.appendChild(task);
     }
+    addButton.disabled = false;
     inputToDo.value = '';
     setLocalStorage();
     getCheckedTask();

@@ -97,8 +97,14 @@ body {
   cursor: pointer;
 }
 .add-todo-btn:hover {
-  color: #f0ec8b;
+  color: #8e43ed;
+  background-color: #f0ec8b;
+  border: 0.1rem solid #8e43ed;
+}
+.add-todo-btn:disabled {
   background-color: #403541;
+  box-shadow: none;
+  cursor: not-allowed;
 }
 
 .todo-task-list {
